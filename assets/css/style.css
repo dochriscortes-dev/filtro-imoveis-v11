@@ -1,0 +1,304 @@
+/* Root Variables */
+:root {
+    --apaf-primary: #0073aa;
+    --apaf-secondary: #005177;
+    --apaf-text: #333;
+    --apaf-light: #f1f1f1;
+    --apaf-border: #ccc;
+    --apaf-white: #fff;
+    --apaf-modal-bg: rgba(0,0,0,0.5);
+    --apaf-radius-btn: 4px;
+    --apaf-radius-modal: 8px;
+    --apaf-radius-checkbox: 8px; /* Soft Squares */
+}
+
+/* Container */
+#apaf-filter-wrapper {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+    position: relative;
+}
+
+/* STICKY BAR */
+.apaf-sticky-bar {
+    position: sticky;
+    top: 0;
+    z-index: 999;
+    background: var(--apaf-white);
+    border-bottom: 1px solid var(--apaf-border);
+    padding: 10px 0;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+.apaf-sticky-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+    gap: 10px;
+}
+
+.apaf-sticky-field, .apaf-toggle-group {
+    flex: 1;
+    min-width: 150px;
+}
+
+.apaf-advanced-link a {
+    text-decoration: none;
+    color: var(--apaf-primary);
+    font-weight: 600;
+}
+
+.apaf-search-btn-wrapper button {
+    background: var(--apaf-primary);
+    color: var(--apaf-white);
+    border: none;
+    padding: 10px 20px;
+    border-radius: var(--apaf-radius-btn);
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.apaf-search-btn-wrapper button:hover {
+    background: var(--apaf-secondary);
+}
+
+/* ADVANCED MODAL */
+.apaf-modal {
+    display: none;
+    position: fixed;
+    z-index: 10000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: var(--apaf-modal-bg);
+    animation: apafFadeIn 0.3s;
+}
+
+@keyframes apafFadeIn {
+    from {opacity: 0;}
+    to {opacity: 1;}
+}
+
+.apaf-modal-content {
+    background-color: var(--apaf-white);
+    margin: 5% auto;
+    padding: 30px;
+    border: 1px solid #888;
+    width: 90%;
+    max-width: 800px;
+    border-radius: var(--apaf-radius-modal);
+    position: relative;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+.apaf-close-modal {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.apaf-close-modal:hover,
+.apaf-close-modal:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.apaf-modal-header {
+    text-align: center;
+    margin-bottom: 20px;
+    border-bottom: 1px solid var(--apaf-border);
+    padding-bottom: 10px;
+}
+
+.apaf-modal-header h2 {
+    margin: 0 0 10px;
+    color: var(--apaf-text);
+}
+
+.apaf-modal-header p {
+    margin: 0;
+    color: #666;
+}
+
+/* Rows & Grid */
+.apaf-row {
+    margin-bottom: 25px;
+}
+
+.apaf-section-label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: var(--apaf-text);
+    font-size: 1.1em;
+}
+
+/* Row 1: Location (3 Cols) */
+.apaf-row-location {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.apaf-col {
+    flex: 1;
+    min-width: 200px;
+}
+
+.apaf-col label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: 600;
+}
+
+.apaf-col input[type="text"] {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #aaa;
+    border-radius: 4px; /* Default input radius */
+    box-sizing: border-box; /* Fix for width 100% padding issue */
+    height: 38px; /* Match Select2 default height roughly */
+}
+
+/* Row 2: Property Type (Checkboxes - Soft Squares) */
+.apaf-checkbox-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 10px;
+}
+
+.apaf-checkbox-label {
+    display: block;
+    cursor: pointer;
+    position: relative;
+}
+
+.apaf-checkbox-label input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+
+.apaf-custom-checkbox {
+    display: block;
+    background-color: #eee;
+    padding: 10px;
+    border-radius: var(--apaf-radius-checkbox); /* Rounded Borders / Soft Squares */
+    text-align: center;
+    transition: all 0.2s;
+    border: 1px solid transparent;
+}
+
+.apaf-checkbox-label:hover .apaf-custom-checkbox {
+    background-color: #ddd;
+}
+
+.apaf-checkbox-label input:checked ~ .apaf-custom-checkbox {
+    background-color: var(--apaf-primary);
+    color: white;
+    border-color: var(--apaf-secondary);
+}
+
+/* Row 3: Price (Slider) */
+.apaf-price-slider-container {
+    padding: 0 10px;
+}
+
+#apaf-price-slider {
+    margin-bottom: 15px;
+}
+
+.apaf-price-inputs {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.apaf-price-inputs input {
+    width: 48%;
+    padding: 8px;
+    text-align: center;
+    border: 1px solid var(--apaf-border);
+    border-radius: var(--apaf-radius-btn);
+}
+
+/* Row 4, 5, 6: Numeric Buttons */
+.apaf-number-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+}
+
+.apaf-num-btn {
+    flex: 1;
+    min-width: 40px;
+    padding: 8px 0;
+    background: #fff;
+    border: 1px solid var(--apaf-border);
+    border-radius: var(--apaf-radius-btn);
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.apaf-num-btn:hover {
+    background: #f9f9f9;
+    border-color: #999;
+}
+
+.apaf-num-btn.active {
+    background: var(--apaf-primary);
+    color: white;
+    border-color: var(--apaf-secondary);
+}
+
+/* Modal Actions */
+.apaf-modal-actions {
+    text-align: center;
+    margin-top: 30px;
+}
+
+#apaf-modal-search-btn {
+    background: var(--apaf-primary);
+    color: white;
+    border: none;
+    padding: 12px 30px;
+    font-size: 18px;
+    border-radius: var(--apaf-radius-btn);
+    cursor: pointer;
+}
+
+#apaf-modal-search-btn:hover {
+    background: var(--apaf-secondary);
+}
+
+/* Select2 Customization overrides */
+.select2-container .select2-selection--single {
+    height: 38px !important;
+}
+.select2-container--default .select2-selection--single .select2-selection__rendered {
+    line-height: 38px !important;
+}
+.select2-container--default .select2-selection--single .select2-selection__arrow {
+    height: 36px !important;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .apaf-sticky-container {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .apaf-row-location {
+        flex-direction: column;
+    }
+}
